@@ -17,16 +17,18 @@ const paths = {
     layouts: 'src/layouts/',
     partials: 'src/layouts/partials/',
     src: {
-        css: 'src/css/*.css',
+        css: 'src/css/**/*.css',
         js: 'src/js/*.js',
+        vendor: 'src/vendor/**/*',
         img: 'src/img/**/*',
         html: 'src/content/'
     },
     dest: {
-        css: 'build/css',
-        js: 'build/js',
-        img: 'build/img',
-        html: 'build'
+        css: 'build/css/',
+        js: 'build/js/',
+        vendor: 'build/vendor/',
+        img: 'build/img/',
+        html: 'build/'
     }
 }
 
@@ -163,6 +165,7 @@ export function html() {
 export function css() {
     return gulp.src(paths.src.css)
         // .pipe(minifyCSS())
+        // .pipe(rename({ extname: '.min.css' })) // change extesion
         .pipe(gulp.dest(paths.dest.css));
 }
 
@@ -173,6 +176,14 @@ export function js() {
     return gulp.src(paths.src.js, { sourcemaps: true })
         // .pipe(concat('app.min.js'))
         .pipe(gulp.dest(paths.dest.js, { sourcemaps: true }));
+}
+
+/**
+ * Copy vendor folder to destination path
+ */
+export function vendor() {
+    return gulp.src(paths.src.vendor)
+        .pipe(gulp.dest(paths.dest.vendor));
 }
 
 /**
