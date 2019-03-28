@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+
+    {{> nav}}
+
+    <div class="container">
+
+        <div class="starter-template">
+            <p class="lead">
+                <div id="{{ title }}">
+                    <h2>{{ title }}</h2>
+                    <div class="py-3">
+                        {{{ contents }}}
+                    </div>
+                </div>
+            </p>
+        </div>
+
+    </div><!-- /.container -->
+
+    {{> footer}}
+
+</body>
+
+</html>

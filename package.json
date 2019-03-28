@@ -1,0 +1,38 @@
+{
+  "name": "mazonos-generator",
+  "version": "0.0.1",
+  "description": "Mazon OS website",
+  "main": "gulpfile.babel.js",
+  "keywords": [
+    "mazonos",
+    "mazon",
+    "translate",
+    "static site generator"
+  ],
+  "author": "José Almeida <jose.afga@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "gulp": "gulp",
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "npm test"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "del": "^4.0.0",
+    "front-matter": "^3.0.1",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-markdown": "^3.0.0",
+    "gulp-rename": "^1.4.0",
+    "handlebars": "^4.1.1",
+    "through2": "^3.0.1"
+  },
+  "contributors": [
+    "Diego Sarzi <diegosarzi@gmail.com>",
+    "José Almeida <jose.afga@gmail.com>"
+  ]
+}
