@@ -45,7 +45,8 @@ export function html() {
     // regexp for extract language code from file path
     var re = new RegExp('([a-zA-Z-]*)$');
 
-    return gulp.src('src/content/*/')
+    // get all languages folders
+    return gulp.src(paths.src.html + '*/')
         .pipe(through.obj((chunk, enc, cb) => {
             try {
                 var lang = chunk.path.split(re)[1]; // get language code
@@ -56,7 +57,7 @@ export function html() {
             }
 
             // process page of current language
-            var pages = gulp.src('src/content/' + lang + '/**/*.md')
+            var pages = gulp.src(paths.src.html + lang + '/**/*.md')
                 .pipe(through.obj((chunk, enc, cb) => {
                     let page = fm(chunk.contents.toString()); // get attributes from markdown
 
@@ -78,7 +79,7 @@ export function html() {
                     // parse to html
                     var html = templates[(pageData.layout || 'default')](pageData);
 
-                    chunk.contents = new Buffer.from(html, "utf-8");
+                    chunk.contents = new Buffer.from(html, 'utf-8');
 
                     cb(null, chunk);
                 }))
