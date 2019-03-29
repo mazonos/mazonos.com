@@ -8,6 +8,8 @@ import handlebars from 'handlebars';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
+import log from 'fancy-log'
+import c from 'ansi-colors'
 import loadFiles from './utils/load-files';
 import path from 'path';
 import del from 'del';
@@ -38,17 +40,21 @@ const paths = {
 export const clean = () => del(paths.dest.html);
 
 /**
- * Process languages folders
+ * Process languages to generate html files
  */
-export function langs() {
+export function html() {
+    // regexp for extract language code from file path
+    var re = new RegExp('([a-zA-Z-]*)$');
+
     return gulp.src('src/content/*/')
         .pipe(through.obj((chunk, enc, cb) => {
-            // get language code
-            var re = new RegExp('([a-zA-Z-]*)$');
-            var lang = chunk.path.split(re)[1];
-            // get language general data file
-            var data = loadFiles(chunk.path + '/data.json')[0].contents;
-            var pageData;
+            try {
+                var lang = chunk.path.split(re)[1]; // get language code
+                var data = loadFiles(chunk.path + '/data.json')[0].contents; // get language data file
+                var pageData;
+            } catch (e) {
+                log.error(c.red(`${e}. In '${c.cyan(lang)}' processing`));
+            }
 
             // process page of current language
             var pages = gulp.src('src/content/' + lang + '/**/*.md')
@@ -92,71 +98,9 @@ export function langs() {
                 .pipe(rename({ extname: '.html' })) // change extesion
                 .pipe(gulp.dest(paths.dest.html));
 
+            // send modified chunk to stream
             cb(null, chunk);
         }));
-}
-
-/**
- * Generate html files
- */
-export function html() {
-    // handlebars data, options
-    var data = {};
-    var options = {
-        ignorePartials: true, // ignores the unknown partials in the handlebars template
-        batch: [paths.partials],
-        helpers: {
-            capitals: function(str) {
-                return str.toUpperCase();
-            }
-        }
-    };
-
-    return gulp.src('src/content/**/*.md')
-        .pipe(through.obj(function(chunk, enc, cb) {
-            try {
-                let page = fm(chunk.contents.toString()); // get attributes from markdown
-                let layout = page.attributes.layout || 'default.hbs'; // define handlebars layout
-
-                console.log(loadFiles());
-
-                // get language code
-                let re = new RegExp(paths.src.html + '([a-zA-Z_]*)');
-                let lang = chunk.path.split(re)[1];
-                // load general data
-                chunk.data = require('./' + paths.src.html + lang + '/data.json');
-                // set page data
-                Object.assign(chunk.data, page.attributes);
-                chunk.data.lang = lang;
-
-                // deprecation
-                chunk.contents = new Buffer.from(page.body, "utf-8");
-            } catch (e) {
-                console.log("Error", e);
-            } finally {
-                // send modified chunk to stream
-                cb(null, chunk);
-            }
-        }))
-        .pipe(markdown())
-        .pipe(through.obj(function(chunk, enc, cb) {
-            try {
-                // chunk.data.contents = chunk.contents.toString();
-
-                // var template = handlebars.compile(file.contents.toString());
-                // var html = template(chunk.data);
-
-                // console.log(chunk.data);
-                // chunk.contents = new Buffer(html, "utf-8");
-            } catch (e) {
-                console.log("Error", e);
-            } finally {
-                // send modified chunk to stream
-                cb(null, chunk);
-            }
-        }))
-        .pipe(rename({ extname: '.html' })) // change extesion
-        .pipe(gulp.dest(paths.dest.html));
 }
 
 /**
@@ -195,6 +139,6 @@ export function img() {
 }
 
 
-export const build = gulp.parallel(html, css, js, img);
-export const watch = () => gulp.watch([paths.src.css, paths.src.js], build);
+export const build = gulp.parallel(html, css, js, vendor, img);
+export const watch = () => gulp.watch([paths.src.html + '**/*', paths.src.css, paths.src.js], build);
 export default gulp.series(clean, build);
