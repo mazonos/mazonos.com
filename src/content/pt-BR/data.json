@@ -1,68 +1,9 @@
 {
-    "nav": {
-        "wiki": "wiki",
-        "forum": "fórum",
-        "download": "download",
-        "packages": "pacotes",
-        "changelog": "changelog"
-    },
-
+    "wiki": "wiki",
+    "forum": "fórum",
+    "download": "download",
+    "packages": "pacotes",
+    "changelog": "changelog",
     "contact": "Contato",
-    "copyright": "Todos os Direitos Reservados",
-
-    "home": {
-        "header": {
-            "title": "GNU/Linux para usuários<br>e desenvolvedores.",
-            "message": "BASEADO EM LINUX FROM SCRATCH"
-        },
-
-        "features": [{
-            "title": "Pronto para Desktops",
-            "text": "Com muitas aplicações nativas e empacotadas em nosso repositório!"
-        }, {
-            "title": "Gerenciador de Pacotes",
-            "text": "Utilizamos o BananaPKG, o qual foi desenvolvido para nosso sistema."
-        }, {
-            "title": "Manter Simples",
-            "text": "Seguimos a filosofia KISS, aproveite o simples."
-        }],
-
-        "content": [{
-            "title": "Desktop Completo",
-            "text": "Temos a suíte do Libreoffice, ferramentas como GIMP, Inkscape, SSR, VLC e muito mais!"
-        }, {
-            "title": "Excelente para Programar",
-            "text": "Com ferramentas de desenvolvimento como Sublime Text, QT5, gcc, python2 e 3, compiladores, lua, etc!"
-        }, {
-            "title": "Manter Simples é Fácil!",
-            "text": "O princípio KISS afirma que a maioria dos sistemas funcionam melhor se eles forem mantidos simples, ao invés de complicados!"
-        }],
-
-        "helping": {
-            "title": "Quem está ajudando?",
-            "founder": "\"Fundador e Gerente do Projeto.\"",
-            "idealizer": "\"Idealizador e Gerente Técnico.\"",
-            "bananapkg": "\"Criador do BananaPKG.\""
-        }
-    },
-
-    "contrib": {
-        "contributions": "Contribuições:",
-        "thanks": "Gostariamos de agradecer a todos que contribuiram para o projeto <b>Mazon OS</b> de alguma forma.",
-        "help_us": "Você pode nos ajudar empacotando programas, com doações, traduções e até mesmo fazendo testes no sistema e reportando possíveis bugs.<br>O nosso <a href=\"/forum\">fórum</a> está ai para debatermos, qualquer dúvida mande um email para: <a href=\"mailto:root@mazonos.com\">root@mazonos.com</a>",
-        "special": {
-            "title": "Um especial agradecimento aos:",
-            "march": "Março",
-            "commit_in": "commit em",
-            "pay_webserver": "pago servidor web",
-            "translate": "tradução",
-            "create": "criado"
-        },
-        "build_packages": "Compilação de Pacotes"
-    },
-
-    "wiki": {
-        "install": "<p>\r\nExistem duas maneiras para realizar a instalação, com o script <a href=\"install-mazon.sh\">install-mazon.sh<\/a>\r\n(dep dialog) ou de forma manual, do seguinte modo:\r\n<\/p>\r\n<p>\r\nPr\u00E9 Requisitos: <br>\r\n- <a href=\"http://mazonos.com/releases/\">Download MazonOS<\/a><br>\r\n- Ter uma distribui\u00E7\u00E3o Linux existente ou Linux liveCD. <br>\r\n- Criar parti\u00E7\u00E3o da raiz usando cfdisk ou gparted (ext4) e tabela DOS \/ - min 20GB\r\n<\/p>\r\n<p>\r\nFormatar a parti\u00E7\u00E3o: <br>\r\n<code># mkfs.ext4 \/dev\/sdx(x)<\/code><br>\r\nMontar a parti\u00E7\u00E3o em \/mnt:<br>\r\n<code># mount \/dev\/sdx(x) \/mnt<\/code>\r\n<\/p>\r\n<p>\r\nExtrair o arquivo da Mazon OS em \/mnt:<br>\r\n<code># tar -xJpvf \/xxx\/xxx\/mazonos.tar.xz -C \/mnt<\/code>\r\n<\/p>\r\n<p>\r\nIr para o diret\u00F3rio \/mnt:<br>\r\n<code># cd \/mnt<\/code>\r\n<\/p>\r\n<p>\r\nMontar proc \/ dev \/ sys e chroot para \/mnt:<br>\r\n<code># mount --type proc \/proc proc\/<\/code><br>\r\n<code># mount --rbind \/dev dev\/<\/code><br>\r\n<code># mount --rbind \/sys sys\/<\/code><br>\r\n<code># chroot \/mnt<\/code>\r\n<\/p>\r\n<p>\r\nUma vez em chroot, vamos alterar o arquivo fstab em \/etc\/fstab, usando vim ou nano.\r\n<\/p>\r\n<p>\r\nAdicione sua parti\u00E7\u00E3o raiz (substitua (x)) e salve o arquivo.<br>\r\nCaso voc\u00EA n\u00E3o se lembre qual \u00E9 a sua parti\u00E7\u00E3o ra\u00EDz, use fdisk -l para v\u00EA-la.<br>\r\n<code>\/dev\/sdx(x) \/ ext4 defaults 1 1<\/code><br>\r\n<\/p>\r\n<p>\r\n- ( <b>BOOT USANDO O GRUB DA MAZONOS<\/b> )<br>\r\n- Instalar o grub em seu disco:<br>\r\n<code># grub-install \/dev\/sd(x)<\/code><br>\r\n- Criar grub.cfg:<br>\r\n<code># grub-mkconfig -o \/boot\/grub\/grub.cfg<\/code><br>\r\n- Sair do chroot e desmontar as parti\u00E7\u00F5es:<br>\r\n<code># exit<\/code><br>\r\n<code># umount -Rl \/mnt<\/code><br>\r\n- Reinicie o seu sistema e aproveite a <b>MazonOS<\/b>.\r\n<\/p>\r\n<p>\r\n- ( <b>DUAL BOOT USANDO GRUB J\u00C1 EXISTENTE<\/b> )<br>\r\n- Se voc\u00EA quer fazer dual boot com um sistema j\u00E1 existente e grub funcionando, saia do chroot\r\ncom o comando \"exit\" e desmonte as parti\u00E7\u00F5es com:<br>\r\n<code># exit<\/code><br>\r\n<code># umount -Rl \/mnt<\/code><br>\r\n<code># update-grub<\/code><br>\r\n- Reinicie o seu sistema e aproveite a <b>MazonOS<\/b>.\r\n<\/p>\r\n<p>\r\nAp\u00F3s instalar e efetuar o login no sistema: senha do root: root, adicione um usu\u00E1rio com:<br>\r\n<code># useradd -m -G audio,video,netdev username<\/code><br>\r\nAdicione a senha do usu\u00E1rio com:<br>\r\n<code># passwd username<\/code><br>\r\n<code># exit<\/code>\r\n<\/p>\r\n<p>Entre no sistema com seu novo usu\u00E1rio e senha, para iniciar use startx.<\/p>",
-        "bugs": "para bugs e pacotes"
-    }
+    "copyright": "Todos os Direitos Reservados"
 }
