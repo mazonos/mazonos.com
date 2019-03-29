@@ -4,7 +4,6 @@ import gulp from 'gulp';
 import through from 'through2'
 import fm from 'front-matter';
 import markdown from 'gulp-markdown';
-import handlebars from 'handlebars';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
@@ -12,7 +11,6 @@ import log from 'fancy-log'
 import c from 'ansi-colors'
 import loadFiles from './utils/load-files';
 import loadTemplates from './utils/load-handlebars';
-import path from 'path';
 import del from 'del';
 
 // general paths
