@@ -63,12 +63,26 @@ export default function(paths, options = { absolute: true }) {
     registerPartials(paths.partials + '**/*.hbs', options);
 
     registerHelpers({
+        // if is even
         if_even: function(cond, options) {
             if ((cond % 2) == 0) {
                 return options.fn(this);
             } else {
                 return options.inverse(this);
             }
+        },
+        // see: https://stackoverflow.com/questions/33059203/error-missing-helper-in-handlebars-js/46317662#46317662
+        math: function(lvalue, operator, rvalue) {
+            lvalue = parseFloat(lvalue);
+            rvalue = parseFloat(rvalue);
+
+            return {
+                '+': lvalue + rvalue,
+                '-': lvalue - rvalue,
+                '*': lvalue * rvalue,
+                '/': lvalue / rvalue,
+                '%': lvalue % rvalue
+            } [operator];
         }
     });
 
