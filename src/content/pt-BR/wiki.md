@@ -58,7 +58,7 @@ Adicione a senha do usuário com:
 
 Entre no sistema com seu novo usuário e senha, para iniciar use startx.
 
-### Contact
+### Contato
 
 **IRC**: irc.freenode.net **Channel:** #mazonos  
 **Email**: root@mazonos.com # para bugs e pacotes
