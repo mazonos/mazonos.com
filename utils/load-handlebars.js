@@ -22,7 +22,19 @@ export function registerPartials(pattern, options = { absolute: true }) {
 }
 
 /**
- * Compile all handlebars layout and return a key=>value object
+ * Register handlebars function helpers
+ * 
+ * @param {object} funcs - object with key as function name and value as function helper
+ */
+export function registerHelpers(funcs = {}) {
+
+    for (var name in funcs) {
+        handlebars.registerHelper(name, funcs[name]);
+    }
+}
+
+/**
+ * Compile all handlebars layout and return a key, value object
  * 
  * @param {string} pattern - glob pattern
  * @param {object} options - glob options
@@ -49,6 +61,16 @@ export function compileLayouts(pattern, options = { absolute: true }) {
  */
 export default function(paths, options = { absolute: true }) {
     registerPartials(paths.partials + '**/*.hbs', options);
+
+    registerHelpers({
+        if_even: function(cond, options) {
+            if ((cond % 2) == 0) {
+                return options.fn(this);
+            } else {
+                return options.inverse(this);
+            }
+        }
+    });
 
     return compileLayouts(paths.layouts + '*.hbs', options);
 }
