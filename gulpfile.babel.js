@@ -44,6 +44,8 @@ export const clean = () => del(paths.dest.html);
 export function html() {
     // regexp for extract language code from file path
     var re = new RegExp('([a-zA-Z-]*)$');
+    // register and compile layouts
+    var templates = loadTemplates(paths);
 
     // get all languages folders
     return gulp.src(paths.src.html + '*/')
@@ -62,7 +64,7 @@ export function html() {
                     let page = fm(chunk.contents.toString()); // get attributes from markdown
 
                     // set page data
-                    pageData = data;
+                    pageData = Object.assign({}, data);
                     Object.assign(pageData, page.attributes);
 
                     chunk.contents = new Buffer.from(page.body, 'utf-8');
@@ -72,12 +74,10 @@ export function html() {
                 }))
                 .pipe(markdown())
                 .pipe(through.obj(function(chunk, enc, cb) {
-                    // register and compile layouts
-                    var templates = loadTemplates(paths);
                     // get markdown parsed
                     pageData.contents = chunk.contents;
                     // parse to html
-                    var html = templates[(pageData.layout || 'default')](pageData);
+                    let html = templates[(pageData.layout || 'default')](pageData);
 
                     chunk.contents = new Buffer.from(html, 'utf-8');
 
