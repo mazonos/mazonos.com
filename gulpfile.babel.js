@@ -61,8 +61,6 @@ export function html() {
             var pages = gulp.src('src/content/' + lang + '/**/*.md')
                 .pipe(through.obj((chunk, enc, cb) => {
                     let page = fm(chunk.contents.toString()); // get attributes from markdown
-                    // define handlebars layout
-                    page.attributes.layout = page.attributes.layout || 'default';
 
                     // set page data
                     pageData = data;
@@ -80,7 +78,7 @@ export function html() {
                     // get markdown parsed
                     pageData.contents = chunk.contents;
                     // parse to html
-                    var html = templates[pageData.layout](pageData);
+                    var html = templates[(pageData.layout || 'default')](pageData);
 
                     chunk.contents = new Buffer.from(html, "utf-8");
 
