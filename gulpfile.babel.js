@@ -11,6 +11,7 @@ import rename from 'gulp-rename';
 import log from 'fancy-log'
 import c from 'ansi-colors'
 import loadFiles from './utils/load-files';
+import loadTemplates from './utils/load-handlebars';
 import path from 'path';
 import del from 'del';
 
@@ -61,7 +62,7 @@ export function html() {
                 .pipe(through.obj((chunk, enc, cb) => {
                     let page = fm(chunk.contents.toString()); // get attributes from markdown
                     // define handlebars layout
-                    page.attributes.layout = page.attributes.layout || 'default.hbs';
+                    page.attributes.layout = page.attributes.layout || 'default';
 
                     // set page data
                     pageData = data;
@@ -74,22 +75,12 @@ export function html() {
                 }))
                 .pipe(markdown())
                 .pipe(through.obj(function(chunk, enc, cb) {
-                    var layout = loadFiles(paths.layouts + pageData.layout)[0];
-                    var partials = loadFiles(paths.partials + '*.hbs', { absolute: true });
-
+                    // register and compile layouts
+                    var templates = loadTemplates(paths);
                     // get markdown parsed
                     pageData.contents = chunk.contents;
-
-                    partials.forEach((partial) => {
-                        var ext = path.extname(partial.path);
-                        var file = partial.contents.toString();
-                        var name = path.basename(partial.path, ext);
-
-                        handlebars.registerPartial(name, file);
-                    });
-
-                    var template = handlebars.compile(layout.contents.toString());
-                    var html = template(pageData);
+                    // parse to html
+                    var html = templates[pageData.layout](pageData);
 
                     chunk.contents = new Buffer.from(html, "utf-8");
 

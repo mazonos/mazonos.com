@@ -1,6 +1,6 @@
 ---
 title: Home
-layout: index.hbs
+layout: index
 
 header:
     title: "GNU/Linux for users<br>and developers."
