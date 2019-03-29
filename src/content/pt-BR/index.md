@@ -17,7 +17,7 @@ features:
     title: Manter Simples
     text: Seguimos a filosofia KISS, aproveite o simples!
 
-content:
+showcase:
 - 
     title: Desktop Completo
     text: Temos a suíte do Libreoffice, ferramentas como GIMP, Inkscape, SSR, VLC e muito mais!

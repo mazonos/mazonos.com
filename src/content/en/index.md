@@ -17,7 +17,7 @@ features:
     title: Keep Simple
     text: We keep the KISS philosophy, enjoy the simplest way!
 
-content:
+showcase:
 - 
     title: Desktop Complete
     text: We have a suite of Libreoffice, tools like GIMP, Inkscape, SSR, VLC and more!
