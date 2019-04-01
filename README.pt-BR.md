@@ -3,7 +3,7 @@
 
 O mazonos.com é um site estático e aqui nós temos o código utilizado para gerá-lo.
 
-*Read this in other languages: [English](README.md), [Português (BR)](README.pt-BR.md).*
+*Read this in another language: [English](README.md), [Português (BR)](README.pt-BR.md).*
 
 ## Uso
 O gerador utiliza Node.js para construir as páginas e npm como gerenciar os pacotes.

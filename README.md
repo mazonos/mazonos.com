@@ -3,7 +3,7 @@
 
 The mazonos.com is a static site and here we have the code used to generate it.
 
-*Read this in other languages: [English](README.md), [Português (BR)](README.pt-BR.md).*
+*Read this in another language: [English](README.md), [Português (BR)](README.pt-BR.md).*
 
 ## Usage
 The generator use Node.js to build the pages and npm as package manager.
