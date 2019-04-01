@@ -1,5 +1,5 @@
 ---
-title: Home
+# title: Home
 layout: index
 
 header:
@@ -7,15 +7,15 @@ header:
     message: LINUX FROM SCRATCH BASED
 
 features:
-- 
-    title: Ready for Desktops
-    text: With many native and packaged apps in our repository!
-- 
-    title: Package Manager
-    text: We use the BananaPKG that was developed for our system.
-- 
-    title: Keep Simple
-    text: We keep the KISS philosophy, enjoy the simplest way!
+    screen-desktop:
+        title: Ready for Desktops
+        text: With many native and packaged apps in our repository!
+    layers:
+        title: Package Manager
+        text: We use the BananaPKG that was developed for our system.
+    check: 
+        title: Keep Simple
+        text: We keep the KISS philosophy, enjoy the simplest way!
 
 showcase:
 - 
@@ -30,7 +30,8 @@ showcase:
 
 helping:
     title: Who is helping?
-    founder: '"Founder and Project Manager."'
-    idealizer: '"Idealizer and Technical Manager."'
-    bananapkg: '"BananaPKG Creator."'
+    people:
+        Diego Sarzi: '"Founder and Project Manager."'
+        Rumbler Soppa: '"Idealizer and Technical Manager."'
+        SlackJeff: '"BananaPKG Creator."'
 ---

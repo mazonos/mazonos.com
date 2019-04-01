@@ -1,5 +1,5 @@
 ---
-title: Home
+# title: Home
 layout: index
 
 header:
@@ -7,15 +7,15 @@ header:
     message: BASEADO EM LINUX FROM SCRATCH
 
 features:
-- 
-    title: Pronto para Desktops
-    text: Com muitas aplicações nativas e empacotadas em nosso repositório!
-- 
-    title: Gerenciador de Pacotes
-    text: Utilizamos o BananaPKG, o qual foi desenvolvido para nosso sistema.
-- 
-    title: Manter Simples
-    text: Seguimos a filosofia KISS, aproveite o simples!
+    screen-desktop:
+        title: Pronto para Desktops
+        text: Com muitas aplicações nativas e empacotadas em nosso repositório!
+    layers:
+        title: Gerenciador de Pacotes
+        text: Utilizamos o BananaPKG, o qual foi desenvolvido para nosso sistema.
+    check: 
+        title: Manter Simples
+        text: Seguimos a filosofia KISS, aproveite o simples!
 
 showcase:
 - 
@@ -30,7 +30,8 @@ showcase:
 
 helping:
     title: Quem está ajudando?
-    founder: '"Fundador e Gerente do Projeto."'
-    idealizer: '"Idealizador e Gerente Técnico."'
-    bananapkg: '"Criador do BananaPKG."'
+    people:
+        Diego Sarzi: '"Fundador e Gerente do Projeto."'
+        Rumbler Soppa: '"Idealizador e Gerente Técnico."'
+        SlackJeff: '"Criador do BananaPKG."'
 ---
