@@ -15,11 +15,15 @@ export default function(pattern, options = { absolute: true }) {
     filenames.forEach((f) => {
         let file = {};
         file.path = f;
-        file.extname = path.extname(file.path);
-        file.contents = fs.readFileSync(file.path, 'utf8');
+        file.stat = fs.lstatSync(f);
+        Object.assign(file, path.parse(f));
 
-        // parse data if is json file
-        file.contents = (file.extname === '.json') ? JSON.parse(file.contents) : file.contents
+        // only read files contents
+        if (file.stat.isFile()) {
+            file.contents = fs.readFileSync(file.path, 'utf8');
+            // parse data if is json file
+            file.contents = (file.ext === '.json') ? JSON.parse(file.contents) : file.contents
+        }
 
         files.push(file);
     });
