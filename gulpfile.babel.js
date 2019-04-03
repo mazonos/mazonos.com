@@ -42,53 +42,53 @@ export const clean = () => del(paths.dest.html);
  * Process languages to generate html files
  */
 export function html() {
-    // regexp for extract language code from file path
-    var re = new RegExp('([a-zA-Z-]*)$');
-    // register and compile layouts
-    var templates = loadTemplates(paths);
+    var re = new RegExp('^([a-zA-Z-]*)'); // regexp for extract language code from file path
+    var data = {}; // site data
+    var langs = loadFiles(paths.src.html + '*/'); // get all languages folders
+    var templates = loadTemplates(paths); // register and compile layouts
 
-    // get all languages folders
-    return gulp.src(paths.src.html + '*/')
+    // language level
+    // get language data file
+    langs.forEach((lang) => {
+        data[lang.name] = loadFiles(lang.path + '/data.json')[0].contents;
+    });
+
+    // page level
+    // process all languages pages
+    return gulp.src(paths.src.html + '*/**/*.md')
         .pipe(through.obj((chunk, enc, cb) => {
-            try {
-                var lang = chunk.path.split(re)[1]; // get language code
-                var data = loadFiles(chunk.path + '/data.json')[0].contents; // get language data file
-                var pageData;
-            } catch (e) {
-                log.error(c.red(`${e}. In '${c.cyan(lang)}' processing`));
-            }
+            let page = fm(chunk.contents.toString()); // get attributes from markdown
 
-            // process page of current language
-            var pages = gulp.src(paths.src.html + lang + '/**/*.md')
-                .pipe(through.obj((chunk, enc, cb) => {
-                    let page = fm(chunk.contents.toString()); // get attributes from markdown
-
-                    // set page data
-                    pageData = Object.assign({}, data);
-                    Object.assign(pageData, page.attributes);
-
-                    chunk.contents = new Buffer.from(page.body, 'utf-8');
-
-                    // send modified chunk to stream
-                    cb(null, chunk);
-                }))
-                .pipe(markdown())
-                .pipe(through.obj(function(chunk, enc, cb) {
-                    // get markdown parsed
-                    pageData.contents = chunk.contents;
-                    // parse to html
-                    let html = templates[(pageData.layout || 'default')](pageData);
-
-                    chunk.contents = new Buffer.from(html, 'utf-8');
-
-                    cb(null, chunk);
-                }))
-                .pipe(rename({ extname: '.html' })) // change extesion
-                .pipe(gulp.dest(paths.dest.html));
+            // store data in chunk
+            chunk.data = page.attributes;
+            chunk.contents = new Buffer.from(page.body, 'utf-8');
 
             // send modified chunk to stream
             cb(null, chunk);
-        }));
+        }))
+        .pipe(markdown())
+        .pipe(through.obj(function(chunk, enc, cb) {
+            let lang = chunk.relative.split(re)[1];
+
+            data[lang][chunk.stem] = Object.assign(chunk.data, {
+                // get markdown parsed
+                contents: chunk.contents,
+                // add some page data
+                lang: lang,
+                page: chunk.stem,
+                permalink: '/' + chunk.relative
+            });
+
+            // parse to html
+            let html = templates[(chunk.data.layout || 'default')](chunk.data);
+
+            chunk.contents = new Buffer.from(html, 'utf-8');
+
+            // send modified chunk to stream
+            cb(null, chunk);
+        }))
+        .pipe(rename({ extname: '.html' })) // change extesion
+        .pipe(gulp.dest(paths.dest.html))
 }
 
 /**
