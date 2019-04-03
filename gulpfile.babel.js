@@ -90,8 +90,10 @@ export function html() {
 
             // parse to html
             let html = templates[(chunk.data.layout || 'default')](data[lang][chunk.stem]);
-
             chunk.contents = new Buffer.from(html, 'utf-8');
+
+            // log process done
+            log.error(`Processed '${c.cyan(lang)}' page '${c.cyan(chunk.stem)}'`);
 
             // send modified chunk to stream
             cb(null, chunk);
