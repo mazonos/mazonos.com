@@ -13,8 +13,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5" data-localize="home.header.title">{{header.title}}</h1>
-                    <p class="sb-5" data-localize="home.header.message" style="text-decoration: underline;">{{header.message}}</p>
+                    <h1 class="mb-5">{{header.title}}</h1>
+                    <p class="sb-5" style="text-decoration: underline;">{{header.message}}</p>
                 </div>
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
                     <!--<<form>
@@ -43,8 +43,8 @@
                             <div class="features-icons-icon d-flex">
                                 <i class="icon-{{@key}} m-auto text-secondary"></i>
                             </div>
-                            <h3 data-localize="home.features.{{@key}}.title">{{this.title}}</h3>
-                            <p class="lead mb-0" data-localize="home.features.{{@key}}.text">{{this.text}}</p>
+                            <h3>{{this.title}}</h3>
+                            <p class="lead mb-0">{{this.text}}</p>
                         </div>
                     </div>
                 {{/each}}
@@ -59,8 +59,8 @@
                 <div class="row no-gutters">
                     <div class="col-lg-6 {{#if_even @index}}order-lg-2{{/if_even}} text-white showcase-img" style="background-image: url('{{@root.url.root}}img/bg-showcase-{{math @index '+' 1}}.jpg');"></div>
                     <div class="col-lg-6 {{#if_even @index}}order-lg-1{{/if_even}} my-auto showcase-text">
-                        <h2 data-localize="home.showcase.{{@index}}.title">{{this.title}}</h2>
-                        <p class="lead mb-0" data-localize="home.showcase.{{@index}}.text">{{this.text}}</p>
+                        <h2>{{this.title}}</h2>
+                        <p class="lead mb-0">{{this.text}}</p>
                     </div>
                 </div>
             {{/each}}
@@ -70,14 +70,14 @@
     <!-- Testimonials -->
     <section class="testimonials text-center bg-light">
         <div class="container">
-            <h2 class="mb-5" data-localize="home.helping.title">{{helping.title}}</h2>
+            <h2 class="mb-5">{{helping.title}}</h2>
             <div class="row">
                 {{#each helping.people as |desc name|}}
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
                             <img class="img-fluid rounded-circle mb-3" src="{{@root.url.root}}img/testimonials-{{math @index '+' 1}}.jpg" alt="">
                             <h5>{{name}}</h5>
-                            <p class="font-weight-light mb-0" data-localize="home.helping.people.{{name}}">{{desc}}</p>
+                            <p class="font-weight-light mb-0">{{desc}}</p>
                         </div>
                     </div>
                 {{/each}}
