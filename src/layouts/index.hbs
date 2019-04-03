@@ -57,7 +57,7 @@
         <div class="container-fluid p-0">
             {{#each showcase}}
                 <div class="row no-gutters">
-                    <div class="col-lg-6 {{#if_even @index}}order-lg-2{{/if_even}} text-white showcase-img" style="background-image: url('img/bg-showcase-{{math @index '+' 1}}.jpg');"></div>
+                    <div class="col-lg-6 {{#if_even @index}}order-lg-2{{/if_even}} text-white showcase-img" style="background-image: url('{{@root.url.root}}img/bg-showcase-{{math @index '+' 1}}.jpg');"></div>
                     <div class="col-lg-6 {{#if_even @index}}order-lg-1{{/if_even}} my-auto showcase-text">
                         <h2 data-localize="home.showcase.{{@index}}.title">{{this.title}}</h2>
                         <p class="lead mb-0" data-localize="home.showcase.{{@index}}.text">{{this.text}}</p>
@@ -75,7 +75,7 @@
                 {{#each helping.people as |desc name|}}
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-{{math @index '+' 1}}.jpg" alt="">
+                            <img class="img-fluid rounded-circle mb-3" src="{{@root.url.root}}img/testimonials-{{math @index '+' 1}}.jpg" alt="">
                             <h5>{{name}}</h5>
                             <p class="font-weight-light mb-0" data-localize="home.helping.people.{{name}}">{{desc}}</p>
                         </div>

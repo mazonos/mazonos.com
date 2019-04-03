@@ -50,7 +50,9 @@ export function html() {
     // language level
     // get language data file
     langs.forEach((lang) => {
-        data[lang.name] = loadFiles(lang.path + '/data.json')[0].contents;
+        data[lang.name] = {
+            data: loadFiles(lang.path + '/data.json')[0].contents
+        }
     });
 
     // page level
@@ -70,17 +72,24 @@ export function html() {
         .pipe(through.obj(function(chunk, enc, cb) {
             let lang = chunk.relative.split(re)[1];
 
-            data[lang][chunk.stem] = Object.assign(chunk.data, {
-                // get markdown parsed
-                contents: chunk.contents,
-                // add some page data
+            // add data with spread objects
+            data[lang][chunk.stem] = {
+                ...data[lang].data, // language level
+                ...chunk.data, // page attributes
+                contents: chunk.contents, // get markdown parsed
+                // add some extra data
                 lang: lang,
                 page: chunk.stem,
-                permalink: '/' + chunk.relative
-            });
+                url: {
+                    root: '/', // root site
+                    lang: `/${lang}/`, // root lang
+                    current: `${chunk.dirname.replace(chunk.base, '')}/`, // current dir
+                    permalink: `/${chunk.relative}` // current page
+                }
+            };
 
             // parse to html
-            let html = templates[(chunk.data.layout || 'default')](chunk.data);
+            let html = templates[(chunk.data.layout || 'default')](data[lang][chunk.stem]);
 
             chunk.contents = new Buffer.from(html, 'utf-8');
 
@@ -88,7 +97,7 @@ export function html() {
             cb(null, chunk);
         }))
         .pipe(rename({ extname: '.html' })) // change extesion
-        .pipe(gulp.dest(paths.dest.html))
+        .pipe(gulp.dest(paths.dest.html));
 }
 
 /**

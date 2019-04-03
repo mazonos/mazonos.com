@@ -3,12 +3,12 @@
     <div class="container">
         <a class="navbar-brand" href="http://mazonos.com/">MAZON OS</a>
         <form class="form-inline">
-            <a class="btn btn-sm" href="wiki.html" data-localize="nav.wiki">{{wiki}}</a>
-            <a class="btn btn-sm" href="contrib.html" data-localize="nav.contrib">{{contrib}}</a>
-            <a class="btn btn-sm" href="forum/" data-localize="nav.forum">{{forum}}</a>
-            <a class="btn btn-sm" href="releases/" data-localize="nav.download">{{download}}</a>
-            <a class="btn btn-sm" href="packages/" data-localize="nav.packages">{{packages}}</a>
-            <a class="btn btn-success" href="changelog.txt" data-localize="nav.changelog">{{changelog}}</a>
+            <a class="btn btn-sm" href="{{url.lang}}wiki.html" data-localize="nav.wiki">{{wiki}}</a>
+            <a class="btn btn-sm" href="{{url.lang}}contrib.html" data-localize="nav.contrib">{{contrib}}</a>
+            <a class="btn btn-sm" href="{{url.root}}forum/" data-localize="nav.forum">{{forum}}</a>
+            <a class="btn btn-sm" href="{{url.root}}releases/" data-localize="nav.download">{{download}}</a>
+            <a class="btn btn-sm" href="{{url.root}}packages/" data-localize="nav.packages">{{packages}}</a>
+            <a class="btn btn-success" href="{{url.root}}changelog.txt" data-localize="nav.changelog">{{changelog}}</a>
         </form>
     </div>
 </nav>
