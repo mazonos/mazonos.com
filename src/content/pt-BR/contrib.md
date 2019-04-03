@@ -4,7 +4,7 @@ title: Contribuições
 Gostariamos de agradecer a todos que contribuiram para o projeto **Mazon OS** de alguma forma.
 
 Você pode nos ajudar empacotando programas, com doações, traduções e até mesmo fazendo testes no sistema e reportando possíveis bugs.  
-O nosso [fórum](/forum) está ai para debatermos, qualquer dúvida envie um email para: root@mazonos.com
+O nosso [fórum](/forum/) está ai para debatermos, qualquer dúvida envie um email para: root@mazonos.com
 
 ### Um especial agradecimento aos:
 
@@ -25,3 +25,5 @@ O nosso [fórum](/forum) está ai para debatermos, qualquer dúvida envie um ema
 `# @f9kill`  
 `# @vcatafesta`  
 `# @raioramalho`
+`# @vovolinux`  
+`# @lordello`

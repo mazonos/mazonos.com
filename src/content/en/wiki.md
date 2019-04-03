@@ -1,21 +1,26 @@
 ---
 title: Wiki
 ---
-There are two ways to install, with the [install-mazon.sh](install-mazon.sh) (dep dialog) script or the manual form as follows:
+There are two ways to install, with the [install-mazon.sh](/install-mazon.sh) (dep dialog) script or the manual form as follows:
 
-##### Pre Requirements:
-- [Download MazonOS](http://mazonos.com/releases/)
+###### Pre Requirements:
+- [Download MazonOS](/releases/)
 - An existing Linux distribution or a Linux liveCD.
-- Create root partition using cfdisk or gparted (ext4) and DOS table / - min 20GB
+- Create root partition using cfdisk or gparted (ext4) and DOS table / - min 20GB - If install EFI create first partition type EFI.
 
 Format partition:  
 `# mkfs.ext4 /dev/sdx(x)`
+
+If use EFI:  
+`# mkfs.fat -F32 /dev/sdx(x)`
 
 Mount partition in /mnt:  
 `# mount /dev/sdx(x) /mnt`
 
 Unzip the mazonos file in /mnt:  
-`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`
+`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`  
+ If use EFI:  
+`# mount /dev/sdx(x) /mnt/boot/EFI`
 
 Go to /mnt directory:  
 `# cd /mnt`
@@ -24,6 +29,7 @@ Mount proc / dev / sys and chroot to /mnt:
 `# mount --type proc /proc proc/`  
 `# mount --rbind /dev dev/`  
 `# mount --rbind /sys sys/`  
+`# mount --rbind /run run/`  
 `# chroot /mnt`
 
 Once in chroot, let's change the fstab file in /etc/fstab, using vim or nano.
@@ -35,6 +41,8 @@ In case you don't remember which is the root partition, use fdisk -l to see it.
 ###### ( BOOT USING MAZONOS GRUB )
 - Install grub to your disk:  
 `# grub-install /dev/sd(x)`  
+- Install grub EFI mode:  
+`# grub-install --target=x86_64-efi --bootloader-id=mazon --recheck`  
 - Create grub.cfg:  
 `# grub-mkconfig -o /boot/grub/grub.cfg`  
 - Exit chroot and unmount the partitions:  
