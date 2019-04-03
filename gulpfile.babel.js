@@ -6,7 +6,6 @@ import fm from 'front-matter';
 import markdown from 'gulp-markdown';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
-import rename from 'gulp-rename';
 import log from 'fancy-log'
 import c from 'ansi-colors'
 import loadFiles from './utils/load-files';
@@ -98,7 +97,6 @@ export function html() {
             // send modified chunk to stream
             cb(null, chunk);
         }))
-        .pipe(rename({ extname: '.html' })) // change extesion
         .pipe(gulp.dest(paths.dest.html));
 }
 
