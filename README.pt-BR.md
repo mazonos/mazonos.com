@@ -27,7 +27,7 @@ Pronto! Basta aguardar o processo concluir e uma nova pasta chamada `build` apar
 ## Traduza
 Ajude-nos a traduzir o site!
 
-Para facilitar a tradução, foram utilizados formatos populares e de fácil leitura, sendo estes *markdown*, *json* e *yaml*. Dentro de `src/content/` são encontradas as pastas correspondentes a cada linguagem disponível. Cada linguagem possui um arquivo chamado `data.json`, nele ficam os dados compartilhados entre todas as páginas do site, demais arquivos `.md` correspondem as páginas em si.  
+Para facilitar a tradução, foram utilizados formatos populares e de fácil leitura, sendo estes *markdown* e *yaml*. Dentro de `src/content/` são encontradas as pastas correspondentes a cada linguagem disponível. Cada linguagem possui um arquivo chamado `data.yml`, nele ficam os dados compartilhados entre todas as páginas do site, demais arquivos `.md` correspondem as páginas em si.  
 Para adicionar uma nova linguagem basta copiar a pasta com a linguagem de referência (de sua preferência) e então editar os arquivos de seu conteúdo.
 
 ## Contribua

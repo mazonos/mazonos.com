@@ -56,7 +56,7 @@ export function html() {
     // get language data file
     langs.forEach((lang) => {
         data[lang.name] = {
-            data: loadFiles(lang.path + '/data.json')[0].contents
+            data: loadFiles(lang.path + '/data.yml')[0].contents
         }
     });
 

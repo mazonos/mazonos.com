@@ -3,6 +3,7 @@
 import glob from 'glob';
 import path from 'path'
 import fs from 'fs';
+import YAML from 'yaml';
 
 /**
  * Load files using glob
@@ -21,8 +22,15 @@ export default function(pattern, options = { absolute: true }) {
         // only read files contents
         if (file.stat.isFile()) {
             file.contents = fs.readFileSync(file.path, 'utf8');
-            // parse data if is json file
-            file.contents = (file.ext === '.json') ? JSON.parse(file.contents) : file.contents
+            // parse data if is json or yaml file
+            switch (file.ext) {
+                case '.json':
+                    file.contents = JSON.parse(file.contents);
+                    break;
+                case '.yml':
+                    file.contents = YAML.parse(file.contents);
+                    break;
+            }
         }
 
         files.push(file);

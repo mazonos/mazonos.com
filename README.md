@@ -27,7 +27,7 @@ Done! Just wait for the process to complete and a new folder named as `build` wi
 ## Translate
 Help us to translate the site!
 
-To facilitate translation popular and easy-to-read formats were used, these being *markdown*, *json* and *yaml*. Inside `src/content/` are found the folders corresponding to each available language. Each language has a file named `data.json` it contains the data shared between all pages of the site, another `.md` files match the pages themselves.  
+To facilitate translation popular and easy-to-read formats were used, these being *markdown* and *yaml*. Inside `src/content/` are found the folders corresponding to each available language. Each language has a file named `data.yml` it contains the data shared between all pages of the site, another `.md` files match the pages themselves.  
 To add a new language just copy the folder with the reference language (of your preference) and then edit the files of your content.
 
 ## Contribute
