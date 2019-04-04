@@ -99,7 +99,7 @@ export function html() {
             chunk.contents = new Buffer.from(html, 'utf-8');
 
             // log process done
-            log.error(`Processed '${c.cyan(lang)}' page '${c.cyan(chunk.stem)}'`);
+            log.info(`Processed '${c.cyan(lang)}' page '${c.cyan(chunk.stem)}'`);
 
             // send modified chunk to stream
             cb(null, chunk);
