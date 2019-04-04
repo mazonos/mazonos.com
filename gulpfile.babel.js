@@ -6,6 +6,7 @@ import fm from 'front-matter';
 import markdown from 'gulp-markdown';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
+import md5 from 'md5';
 import log from 'fancy-log'
 import c from 'ansi-colors'
 import loadFiles from './utils/load-files';
@@ -32,6 +33,11 @@ const paths = {
     }
 }
 
+// store site data
+var data = {
+    assets: {}
+}
+
 /**
  * Clean previous builds
  */
@@ -42,7 +48,6 @@ export const clean = () => del(paths.dest.html);
  */
 export function html() {
     var re = new RegExp('^([a-zA-Z-]*)'); // regexp for extract language code from file path
-    var data = {}; // site data
     var langs = loadFiles(paths.src.html + '*/'); // get all languages folders
     var templates = loadTemplates(paths); // register and compile layouts
 
@@ -73,6 +78,7 @@ export function html() {
 
             // add data with spread objects
             data[lang][chunk.stem] = {
+                assets: data.assets, // site level
                 ...data[lang].data, // language level
                 ...chunk.data, // page attributes
                 contents: chunk.contents, // get markdown parsed
@@ -107,6 +113,12 @@ export function css() {
     return gulp.src(paths.src.css)
         // .pipe(minifyCSS())
         // .pipe(rename({ extname: '.min.css' })) // change extesion
+        .pipe(through.obj((chunk, enc, cb) => {
+            data.assets[chunk.relative] = chunk.relative + '?id=' + md5(chunk.contents);
+
+            // send chunk to stream
+            cb(null, chunk);
+        }))
         .pipe(gulp.dest(paths.dest.css));
 }
 
@@ -114,9 +126,15 @@ export function css() {
  * Process JS files
  */
 export function js() {
-    return gulp.src(paths.src.js, { sourcemaps: true })
+    return gulp.src(paths.src.js)
         // .pipe(concat('app.min.js'))
-        .pipe(gulp.dest(paths.dest.js, { sourcemaps: true }));
+        .pipe(through.obj((chunk, enc, cb) => {
+            data.assets[chunk.relative] = chunk.relative + '?id=' + md5(chunk.contents);
+
+            // send chunk to stream
+            cb(null, chunk);
+        }))
+        .pipe(gulp.dest(paths.dest.js));
 }
 
 /**
@@ -136,6 +154,6 @@ export function img() {
 }
 
 
-export const build = gulp.parallel(html, css, js, vendor, img);
+export const build = gulp.series(gulp.parallel(css, js, vendor, img), html);
 export const watch = () => gulp.watch([paths.src.html + '**/*', paths.src.css, paths.src.js], build);
 export default gulp.series(clean, build);
