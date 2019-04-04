@@ -24,6 +24,6 @@ O nosso [fórum](/forum/) está ai para debatermos, qualquer dúvida envie um em
 `# @cyborg`  
 `# @f9kill`  
 `# @vcatafesta`  
-`# @raioramalho`
+`# @raioramalho`  
 `# @vovolinux`  
 `# @lordello`
