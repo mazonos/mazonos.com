@@ -4,4 +4,13 @@ node_js:
 - stable
 
 script:
-- npm run build
+- npm run start
+
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_TOKEN
+  file: build/*
+  skip_cleanup: true
+  on:
+    tags: true
