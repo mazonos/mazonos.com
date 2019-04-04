@@ -18,7 +18,8 @@ Montar a partição em /mnt:
 `# mount /dev/sdx(x) /mnt`
 
 Extrair o arquivo da Mazon OS em /mnt:  
-`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`  
+`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`
+
  Se utilizar EFI:  
 `# mount /dev/sdx(x) /mnt/boot/EFI`
 

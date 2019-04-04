@@ -18,7 +18,8 @@ Mount partition in /mnt:
 `# mount /dev/sdx(x) /mnt`
 
 Unzip the mazonos file in /mnt:  
-`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`  
+`# tar -xJpvf /xxx/xxx/mazonos.tar.xz -C /mnt`
+
  If use EFI:  
 `# mount /dev/sdx(x) /mnt/boot/EFI`
 
