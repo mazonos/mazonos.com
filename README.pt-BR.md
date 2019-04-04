@@ -1,5 +1,5 @@
 # Mazon OS - Gerador de site estático
-[![Build Status](https://travis-ci.com/joseafga/mazonos.com.svg?branch=master)](https://travis-ci.com/joseafga/mazonos.com)
+[![Build Status](https://travis-ci.org/joseafga/mazonos.com.svg?branch=master)](https://travis-ci.org/joseafga/mazonos.com)
 
 O mazonos.com é um site estático e aqui nós temos o código utilizado para gerá-lo.
 

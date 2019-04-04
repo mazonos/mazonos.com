@@ -1,5 +1,5 @@
 # Mazon OS - Static site generator
-[![Build Status](https://travis-ci.com/joseafga/mazonos.com.svg?branch=master)](https://travis-ci.com/joseafga/mazonos.com)
+[![Build Status](https://travis-ci.org/joseafga/mazonos.com.svg?branch=master)](https://travis-ci.org/joseafga/mazonos.com)
 
 The mazonos.com is a static site and here we have the code used to generate it.
 
