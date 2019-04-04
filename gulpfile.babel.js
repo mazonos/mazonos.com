@@ -6,6 +6,7 @@ import fm from 'front-matter';
 import markdown from 'gulp-markdown';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
+import rename from 'gulp-rename';
 import md5 from 'md5';
 import log from 'fancy-log'
 import c from 'ansi-colors'
@@ -111,8 +112,8 @@ export function html() {
  */
 export function css() {
     return gulp.src(paths.src.css)
-        // .pipe(minifyCSS())
-        // .pipe(rename({ extname: '.min.css' })) // change extesion
+        .pipe(minifyCSS())
+        .pipe(rename({ extname: '.min.css' })) // change extesion
         .pipe(through.obj((chunk, enc, cb) => {
             data.assets[chunk.relative] = chunk.relative + '?id=' + md5(chunk.contents);
 
