@@ -117,3 +117,6 @@ typings/
 
 # compiled files
 build/
+
+# ruby
+.ruby-version
