@@ -9,8 +9,9 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: $GITHUB_TOKEN
-  file: build/*
+    secure: eHj1khbveS9aceO3xz+HTjWp8Gwtlsdglb0cK9x5EcfSSdGafb5R2SmT4oGaPQau4zhD3YX4COZlxPs3CCnIVfrhAddV0UiC8NcHj3h2qR0nDNhCnw9EX1DEhl2w1JzgTaP6pNQCmQhf307PyGcV0nJpn3b+ZOLavqYV1vic8P4TDHB+RSv/6DXHBkGfKSD0gOLoPCF46CNfVR1Z6egapeSTCzA6SETxvwZhPeEuRR/LUklWG1VlFi9e5qFlZ2Vv0/PwQ4fd2UVdr35K6DA01P0ze7zBrsZty17N7WRL5N3FzICdWak60t8j1fAAqNYILKRBGOqAJ72TbwoJQSliZlontAF20qkyJdAh6Ya+/p3KzEpzPaxt95LO4anUmfcCqXFW7oXmiwW3YNlTsQ84Cnlow+h2++oFuD9LnsSzHll5IGdg7PacLUsA+k03+Prrw5NRedSlMDomP/3Ip2QUvPeDw5mjwyYSmswkit4/EhJsHAJw+MvZdlJi14wuDEtT6KBGvKMxBuXnB3d+ATqnINed1xPuUctq6K++I4iTzuW85xmsZ1It70lxtrnXsVQtcdj+bECq83Z7WCvWUZcidJkpVP2gEZbq2jOm0wp9YiWQiZhVZvMnQjiUKeDmlrR2+yrPDNTzf1mHoXDUc9NBxcHQw4TwwfvrCZRYzIRY44U=
+  file_glob: true
+  file: build/**/*
   skip_cleanup: true
   on:
     tags: true
