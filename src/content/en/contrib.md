@@ -1,4 +1,10 @@
 ---
+# This is the language file
+# Data here is for english contrib page
+# 
+# author: Diego Sarzi <diegosarzi@gmail.com>
+#         José Almeida <jose.afga@gmail.com> (adaptation)
+
 title: Contributions
 ---
 We would like to thank everyone who contributed to the **Mazon OS** project in some way.

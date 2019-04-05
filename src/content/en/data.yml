@@ -1,3 +1,9 @@
+# This is the language file
+# Data here is shared between all english pages
+# 
+# author: Diego Sarzi <diegosarzi@gmail.com>
+#         José Almeida <jose.afga@gmail.com> (adaptation)
+
 # navigation
 wiki: wiki
 contrib: contrib

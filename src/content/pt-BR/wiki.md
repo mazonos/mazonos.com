@@ -1,4 +1,9 @@
 ---
+# Este é um arquivo de linguagem
+# Os dados aqui são para a página wiki em português (Brasil)
+# 
+# author: José Almeida <jose.afga@gmail.com>
+
 title: Wiki
 ---
 Existem duas maneiras para realizar a instalação, com o script [install-mazon.sh](/install-mazon.sh) (dep dialog) ou de forma manual, do seguinte modo:

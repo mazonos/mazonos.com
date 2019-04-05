@@ -1,4 +1,10 @@
 ---
+# This is the language file
+# Data here is for english wiki page
+# 
+# author: Diego Sarzi <diegosarzi@gmail.com>
+#         José Almeida <jose.afga@gmail.com> (adaptation)
+
 title: Wiki
 ---
 There are two ways to install, with the [install-mazon.sh](/install-mazon.sh) (dep dialog) script or the manual form as follows:

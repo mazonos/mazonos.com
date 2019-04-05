@@ -1,4 +1,9 @@
 ---
+# Este é um arquivo de linguagem
+# Os dados aqui são para a página contrib em português (Brasil)
+# 
+# author: José Almeida <jose.afga@gmail.com>
+
 title: Contribuições
 ---
 Gostariamos de agradecer a todos que contribuiram para o projeto **Mazon OS** de alguma forma.
