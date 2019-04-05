@@ -14,6 +14,12 @@ Our [forum](/forum/) is there to discuss, any questions send an email to: root@m
 
 ### Special thanks to:
 
+@f9kill - Hugo Torres de Lima  
+`# + pay webserver mazonos.com (May-2019)`
+
+@vovolinux - Vinicius A. Lopes  
+`# + pay webserver mazonos.com (April-2019)`
+
 @vcatafesta - Vilmar Catafesta  
 `# + commit in install-mazon.sh`  
 `# + pay webserver mazonos.com (March-2019)`

@@ -13,6 +13,12 @@ O nosso [fórum](/forum/) está ai para debatermos, qualquer dúvida envie um em
 
 ### Um especial agradecimento aos:
 
+@f9kill - Hugo Torres de Lima  
+`# + pago servidor web mazonos.com (Maio-2019)`
+
+@vovolinux - Vinicius A. Lopes  
+`# + pago servidor web mazonos.com (Abril-2019)`
+
 @vcatafesta - Vilmar Catafesta  
 `# + commit em install-mazon.sh`  
 `# + pago servidor web mazonos.com (Março-2019)`
