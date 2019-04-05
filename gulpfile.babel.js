@@ -7,6 +7,8 @@ import markdown from 'gulp-markdown';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
 import rename from 'gulp-rename';
+import tar from 'gulp-tar';
+import gzip from 'gulp-gzip';
 import md5 from 'md5';
 import log from 'fancy-log'
 import c from 'ansi-colors'
@@ -154,7 +156,19 @@ export function img() {
         .pipe(gulp.dest(paths.dest.img));
 }
 
+/**
+ * Compress build folder
+ */
+export function compress() {
+    var version = loadFiles('./package.json')[0].contents.version;
 
-export const build = gulp.series(gulp.parallel(css, js, vendor, img), html);
+    return gulp.src(paths.dest.html + '/**/*')
+        .pipe(tar(`build_${version}.tar`))
+        .pipe(gzip())
+        .pipe(gulp.dest(paths.dest.html));
+}
+
+
+export const build = gulp.series(gulp.parallel(css, js, vendor, img), html, compress);
 export const watch = () => gulp.watch([paths.src.html + '**/*', paths.src.css, paths.src.js], build);
 export default gulp.series(clean, build);
