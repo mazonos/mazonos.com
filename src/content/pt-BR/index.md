@@ -8,8 +8,8 @@
 layout: index  # não altere este
 
 header:
-title: "GNU/Linux para usuários<br>e desenvolvedores."
-message: BASEADO EM LINUX FROM SCRATCH
+  title: "GNU/Linux para usuários<br>e desenvolvedores."
+  message: BASEADO EM LINUX FROM SCRATCH
 
 features:
   screen-desktop:
