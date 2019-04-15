@@ -169,6 +169,6 @@ export function compress() {
 }
 
 
-export const build = gulp.series(gulp.parallel(css, js, vendor, img), html, compress);
+export const build = gulp.series(gulp.parallel(css, js, vendor, img), html);
 export const watch = () => gulp.watch([paths.src.html + '**/*', paths.src.css, paths.src.js], build);
-export default gulp.series(clean, build);
+export default gulp.series(clean, build, compress);
