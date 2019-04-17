@@ -29,10 +29,10 @@
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-gzip": "^1.4.2",
-    "gulp-markdown": "^3.0.0",
+    "gulp-markdown": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-tar": "^2.1.0",
-    "handlebars": "^4.1.1",
+    "handlebars": "^4.1.2",
     "md5": "^2.2.1",
     "through2": "^3.0.1",
     "yaml": "^1.4.0"
