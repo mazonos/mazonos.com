@@ -6,6 +6,7 @@ import fm from 'front-matter';
 import markdown from 'gulp-markdown';
 import minifyCSS from 'gulp-csso';
 import concat from 'gulp-concat';
+import responsive from 'gulp-responsive';
 import rename from 'gulp-rename';
 import tar from 'gulp-tar';
 import gzip from 'gulp-gzip';
@@ -149,10 +150,27 @@ export function vendor() {
 }
 
 /**
- * Copy images to destination path
+ * Manipulate images to destination path
  */
 export function img() {
     return gulp.src(paths.src.img)
+        .pipe(responsive({
+            'bg.jpg': {
+                width: 1920,
+                height: 720,
+                crop: 'center',
+                withoutEnlargement: true
+            },
+            'bg-showcase-*.jpg': {},
+            'testimonials-*.jpg': {
+                width: 192
+            }
+        }, {
+            // global config
+            quality: 70,
+            progressive: true,
+            format: 'jpg'
+        }))
         .pipe(gulp.dest(paths.dest.img));
 }
 
