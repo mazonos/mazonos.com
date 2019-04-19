@@ -25,7 +25,7 @@ const paths = {
         css: 'src/css/**/*.css',
         js: 'src/js/*.js',
         vendor: 'src/vendor/**/*',
-        img: 'src/img/**/*',
+        img: 'src/img/**/*.{jpg,png}',
         html: 'src/content/'
     },
     dest: {
@@ -164,7 +164,14 @@ export function img() {
             'bg-showcase-*.jpg': {},
             'testimonials-*.jpg': {
                 width: 192
-            }
+            },
+            'screenshots/*.{jpg,png}': [{
+                max: 1920, // resize only bigger than FHD
+                quality: 90 // high quality
+            }, {
+                rename: { prefix: 'thumbnail-' },
+                width: 380
+            }]
         }, {
             // global config
             quality: 70,
