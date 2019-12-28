@@ -32,7 +32,7 @@
     "gulp-markdown": "^3.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-tar": "^2.1.0",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.3.0",
     "md5": "^2.2.1",
     "through2": "^3.0.1",
     "yaml": "^1.4.0"
